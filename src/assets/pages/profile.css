@@ -1,0 +1,49 @@
+.profile-container {
+    max-width: 900px; /* Increased width */
+    margin: 280px auto; /* More vertical spacing */
+    padding: 40px; /* Increased padding for better spacing */
+    background: rgba(255, 255, 255, 0.95); /* Slightly more visible */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
+    text-align: center;
+    font-size: 1.2rem; /* Slightly larger font size */
+    height: 100%;
+}
+
+/* Make headings bigger */
+.profile-container h1 {
+    color: #ff6600;
+    font-size: 2.5rem; /* Increased size */
+    margin-bottom: 20px;
+}
+
+.profile-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-container li {
+    background: #fff;
+    padding: 20px; /* More spacing inside list items */
+    margin: 15px 0;
+    border-radius: 8px; /* Slightly more rounded corners */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        max-width: 95%; /* Take more space on smaller screens */
+        padding: 30px;
+        margin: 130px auto; /* More vertical spacing */
+    }
+
+    .profile-container h1 {
+        font-size: 2rem; /* Adjust for mobile */
+    }
+
+    .profile-container li {
+        padding: 15px;
+    }
+}

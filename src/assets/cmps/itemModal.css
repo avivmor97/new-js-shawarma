@@ -1,0 +1,199 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.modal-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.custom-options h3 {
+    margin-top: 15px;
+}
+
+.option-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.option-list button {
+    background: #ff6600;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Green Background for Selected Extras */
+.option-list .selected-extra {
+    background: #28a745;
+}
+
+/* Green Background for Selected Drink Size */
+.size-btn.selected-extra {
+    background: #28a745;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 500px;
+    cursor: pointer;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.cancel-btn {
+    background: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 90%;
+        width: 95%;
+        height: 450px; /* Fixed height */
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .itemName{
+        margin: 0;
+    }
+
+    .modal-img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .custom-options h3 {
+        font-size: 1.3rem;
+        margin-top: 10px;
+    }
+
+    .option-list {
+        gap: 10px;
+    }
+
+    .option-list button {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .modal-actions {
+        display: flex;
+        flex-direction: row; /* Ensures buttons are in a row */
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .cancel-btn,
+    .confirm-btn {
+        flex: 1; /* Buttons will evenly space out */
+        margin: 0 5px;
+        font-size: 1rem;
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .close-btn {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        height: 450px; /* Keep fixed height */
+        padding: 10px;
+    }
+
+    .modal-img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .custom-options h3 {
+        font-size: .9rem;
+    }
+
+    .option-list {
+        gap: 8px;
+    }
+
+    .option-list button {
+        font-size: 0.6rem;
+        padding: 6px 10px;
+    }
+
+    .modal-actions {
+        width: 100%;
+       
+        justify-content: space-evenly;
+    }
+
+    .cancel-btn,
+    .confirm-btn {
+        font-size: 0.7rem;
+        padding: 12px;
+        
+    }
+
+    .close-btn {
+        font-size: 1.4rem;
+        width: 10%;
+    }
+}

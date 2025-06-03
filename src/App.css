@@ -1,0 +1,144 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: url('/images/BC.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Add a light overlay */
+html::before, body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.5); /* Light white overlay */
+  z-index: -1; /* Place the overlay behind other elements */
+  pointer-events: none; /* Allow interactions with content below */
+}
+
+
+#root {
+  height: 100%;
+}
+
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  
+}
+
+
+
+
+.footer {
+  background: rgba(0, 0, 0, 0.0); /* Semi-transparent black */
+  color: white;
+  padding: 10px 20px;
+  flex-shrink: 0;
+  text-align: center; /* Center align text */
+}
+
+
+
+
+/* /////////////////////////////////////////////////////////////////// */
+
+
+@media (max-width: 667px) {
+  /* Ensure Background Image Scales Properly */
+  html, body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Adjust Light Overlay for Better Visibility */
+  html::before, body::before {
+    background: rgba(10, 10, 10, 0.6); /* Slightly darker overlay */
+  }
+
+  /* Root & App Layout Adjustments */
+  #root, .app {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Footer Adjustments */
+  .footer {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  /* Homepage Adjustments */
+  .homepage {
+    grid-template-rows: auto auto auto;
+    padding: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem; /* Smaller title */
+  }
+
+  .info-section h2 {
+    font-size: 3rem;
+  }
+
+  .bolder {
+    font-size: 4.5rem;
+  }
+
+  .info-section .des {
+    font-size: 1.3rem;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  /* Order Section Adjustments */
+  .order-now-btn {
+    font-size: 1.3rem;
+    padding: 15px 30px;
+  }
+
+  /* Reservation Form */
+  .reservation-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .form-group {
+    max-width: 90%;
+  }
+
+  /* Adjust Modal for Mobile */
+  .modal-content {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .modal-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .option-list {
+    gap: 5px;
+  }
+
+  .option-list button {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}

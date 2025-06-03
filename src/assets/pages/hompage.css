@@ -1,0 +1,314 @@
+/* General Styles */
+.homepage {
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  height: 100vh;
+  text-align: center;
+  color: #333333;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  /* Hidden by default */
+  animation: fadeDown 1s ease-out forwards;
+  /* Slide down animation */
+}
+
+.hero h1 {
+  margin-top: 100px;
+  font-size: 3.5rem;
+  color: #fbf7f7;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Description Section */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: justify;
+  opacity: 0;
+  /* Hidden by default */
+  animation: fadeIn 1s ease-in forwards 0.5s;
+  /* Fade in with delay */
+}
+
+.info-section h2 {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  color: #ffcc00;
+  /* Highlight headings in a contrasting color */
+  transform: translateY(30px);
+  /* Start slightly below */
+  animation: moveUp 1s ease-out forwards 0.8s;
+  /* Move up animation */
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+.bolder {
+  font-size: 6.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+}
+
+
+
+.info-section .des {
+  font-family: 'Lora', serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  line-height: 1.8;
+  max-width: 800px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+}
+
+/* Order Section */
+.order-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+ 
+  animation: fadeUp 1s ease-in forwards 1.2s;
+  
+}
+
+.order-now-btn {
+  background: #ff6600;
+  color: white;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  animation: bounce 1.5s infinite;
+}
+
+.order-now-btn:hover {
+  background: #e65c00;
+  
+}
+
+/* Keyframe Animations */
+
+/* Hero: Slide Down */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+    /* Start above */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    /* End at original position */
+  }
+}
+
+/* Description: Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Heading: Move Up */
+@keyframes moveUp {
+  from {
+    transform: translateY(30px);
+    /* Start below */
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    /* End at original position */
+    opacity: 1;
+  }
+}
+
+/* Order Section: Fade Up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    /* Start below */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    /* End at original position */
+  }
+}
+
+/* Button: Bounce */
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    /* Resting position */
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* Move up slightly */
+  }
+}
+
+
+
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+@media (max-width: 1300px) {
+  .homepage {
+    grid-template-rows: auto auto auto;
+    padding: 10px 5px;
+    overflow-y: auto;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem; 
+    margin-top: 70px;
+  }
+
+   .info-section {
+    padding: 10px;
+  }
+
+  .info-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .bolder {
+    font-size: 3rem;
+  }
+
+  .info-section .des {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    max-width: 95%;
+  }
+
+  .order-now-btn {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+  }
+
+  .order-section {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  /* Homepage Layout */
+  .homepage {
+    grid-template-rows: auto auto auto;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .homepage::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Edge */
+  }
+
+  /* Hero Section */
+  .hero h1 {
+    font-size: 1.5rem; /* Reduce title size */
+    margin-top: 80px;
+  }
+
+  /* Description Section */
+  .info-section {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .info-section h2 {
+    font-size: 2.0rem;
+  }
+
+  .bolder {
+    font-size: 2.8rem;
+  }
+
+  .info-section .des {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    max-width: 90%;
+  }
+
+  /* Order Section */
+  .order-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .order-now-btn {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
+
+  /* Ensure scrolling is also enabled inside order section */
+  .order-section {
+    margin-bottom: 50px;
+  }
+
+  /* Animation Tweaks */
+  @keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+
