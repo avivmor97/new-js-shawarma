@@ -13,7 +13,7 @@ export const NavBar = () => {
       <nav className="navbar">
         <div className="navbar-container">
           {/* Mobile Menu Button */}
-          <button className="menu-btn" onClick={() => setIsMenuOpen(true)}>☰</button>
+          <button className="nav-menu-btn" onClick={() => setIsMenuOpen(true)}>☰</button>
 
           {/* Desktop Navigation */}
           <div className="nav-links">
@@ -72,4 +72,4 @@ export const NavBar = () => {
       )}
     </>
   )
-}
+} 

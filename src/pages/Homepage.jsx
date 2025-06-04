@@ -12,12 +12,13 @@ export const Homepage = () => {
         <section className="homepage">
             {/* Hero Section */}
             <div className="hero">
-                <h1>ShawarmBoutique</h1>
+                <h1 className="hero-title">ShawarmBoutique</h1>
             </div>
+
 
             {/* Description Section */}
             <div className="info-section">
-                <h2>
+                <h2 className="section-title">
                     Elevate Your<br />
                     <span className="bolder">Shawarma Experience</span>
                 </h2>

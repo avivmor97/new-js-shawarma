@@ -41,9 +41,9 @@ export const Menu = () => {
   ]
 
   return (
-    <div className="main-container">
+    <div className="menu-main-container">
       <section className="menu-section">
-        <h1>Our Menu</h1>
+        <h1 className="menu-header ">Our Menu</h1>
         <div className="scrollable-menu">
           {categories.map((category, catIndex) => (
             <div key={catIndex} className="menu-category">

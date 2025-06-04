@@ -1,25 +1,47 @@
-.main-container {
+/* ======== Main Layout ======== */
+.menu-main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 80px 140px;
-    margin: 150px auto;
+    height: 100vh;
+    margin: 0 auto;
     border-radius: 20px;
     overflow: hidden;
     box-sizing: border-box;
     max-width: 1200px;
     animation: fadeIn 1.5s ease-in;
-    /* Apply fade-in animation */
+    text-align: center;
 }
 
-.menu-section {
+.menuRoll {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    box-sizing: border-box;
     text-align: center;
+    flex-wrap: wrap; /* אם יש כמה */
+    gap: 20px;
+}
+
+
+.menu-header {
+    margin-top: 100px;
+}
+
+/* ======== Section Structure ======== */
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     box-sizing: border-box;
     animation: fadeIn 1.5s ease-in;
-    /* Apply fade-in animation */
+    text-align: center;
 }
 
 .menu-section h1 {
@@ -27,28 +49,15 @@
     color: #ffffff;
     font-weight: bold;
     animation: fadeIn 1.5s ease-in;
-    /* Apply fade-in animation */
-}
-
-
-.cardItemName {
-
-    margin: 0;
 }
 
 .menu-category {
     width: 100%;
     margin: 0 auto 50px;
-    list-style: none;
     padding: 0;
     max-width: 900px;
+    list-style: none;
 }
-
-.menuRoll {
-
-    margin-right: 35px;
-}
-
 
 .menu-category h2 {
     font-size: 2.5rem;
@@ -57,9 +66,9 @@
     text-align: center;
     font-weight: bold;
     animation: fadeIn 1.5s ease-in;
-    /* Apply fade-in animation */
 }
 
+/* ======== Items ======== */
 .menu-item {
     display: flex;
     justify-content: space-between;
@@ -74,8 +83,6 @@
     box-sizing: border-box;
     transition: transform 0.2s ease;
     animation: fadeIn 1.5s ease-in;
-    /* Apply fade-in animation */
-
 }
 
 .menu-item:hover {
@@ -130,150 +137,58 @@
     transform: scale(1.05);
 }
 
+/* ======== Scroll ======== */
 .scrollable-menu {
     width: 100%;
     max-height: 600px;
     overflow-y: scroll;
     padding-right: 10px;
     scrollbar-width: none;
+    padding: 0;
 }
-
 
 .scrollable-menu::-webkit-scrollbar {
     display: none;
 }
 
-.centered-text {
-    text-align: center;
-}
-
-.large-text {
-    font-size: 1.5rem;
-}
-
-.bold-text {
-    font-weight: bold;
-}
-
-/* Fade-In Animation */
+/* ======== Animation ======== */
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-
+/* ======== Media Queries ======== */
 @media (max-width: 1300px) {
-  .main-container {
-    padding: 30px 40px;
-    margin: 20px auto;
-    max-width: 95%;
-    border-radius: 10px;
-  }
-
-  .menu-section h1 {
-    font-size: 2.2rem;
-  }
-
-  .menu-category {
-    margin: 0 auto 30px;
-    max-width: 100%;
-  }
-
-  .menu-category h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-  }
-
-  .menu-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    gap: 15px;
-  }
-
-  .menu-item img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-
-  .menu-info {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .menu-info h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-  }
-
-  .menu-info p {
-    font-size: 0.95rem;
-    margin: 6px 0;
-  }
-
-  .menu-info span {
-    font-size: 0.9rem;
-  }
-
-  .menu-info button {
-    font-size: 1rem;
-    padding: 10px 20px;
-    width: 100%;
-  }
-
-  .large-text {
-    font-size: 1.1rem;
-  }
-
-  .scrollable-menu {
-    max-height: 500px;
-    padding-right: 5px;
-  }
-}
-
-
-
-@media (max-width: 768px) {
     .main-container {
-        padding: 40px 20px;
-        margin: 15px auto;
-        max-width: 100%;
+        padding: 50px 60px;
+        margin: 80px auto;
+        border-radius: 15px;
+        max-width: 95%;
     }
 
     .menu-section h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     .menu-category h2 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
+        font-size: 2rem;
+        margin-bottom: 20px;
     }
 
     .menu-item {
-        flex-direction: column;
-        text-align: center;
         padding: 20px;
-        margin-bottom: 20px;
+        gap: 20px;
     }
 
     .menu-item img {
         width: 120px;
         height: 120px;
-        margin-bottom: 10px;
-    }
-
-  
-
-    .menu-info {
-        margin-left: 0;
     }
 
     .menu-info h3 {
@@ -286,16 +201,18 @@
 
     .menu-info button {
         font-size: 1rem;
-        padding: 12px 25px;
+        padding: 12px 24px;
     }
+}
 
-    .scrollable-menu {
-        max-height: 500px;
-        padding-right: 5px;
+@media (max-width: 768px) {
+    .main-container {
+        padding: 30px 20px;
+        margin: 30px auto;
     }
 
     .menu-section h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .menu-category h2 {
@@ -303,12 +220,69 @@
     }
 
     .menu-item {
+        flex-direction: column;
+        text-align: center;
         padding: 15px;
     }
 
     .menu-item img {
         width: 100px;
         height: 100px;
+    }
+
+    .menu-info {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .menu-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .menu-info p {
+        font-size: 0.9rem;
+    }
+
+    .menu-info button {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+        width: 100%;
+    }
+
+    .scrollable-menu {
+        max-height: 450px;
+        padding-right: 5px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .main-container {
+        padding: 40px 80px;
+        margin: 100px auto;
+        max-width: 1000px;
+        border-radius: 12px;
+    }
+
+    .menu-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .menu-category h2 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+
+    .menu-item {
+        padding: 20px;
+    }
+
+    .menu-item img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .menu-info {
+        margin-left: 20px;
     }
 
     .menu-info h3 {
@@ -320,11 +294,11 @@
     }
 
     .menu-info button {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 10px 20px;
     }
 
     .scrollable-menu {
-        max-height: 450px;
+        max-height: 500px;
     }
 }

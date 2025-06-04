@@ -99,13 +99,14 @@
 }
 
 /* Mobile Menu Button */
-.menu-btn {
+.nav-menu-btn {
   display: none;
   background: none;
   border: none;
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
+  margin-left: 15px;
 }
 
 /* Mobile Navigation Modal */
@@ -123,6 +124,7 @@
 }
 
 .mobile-nav {
+  position: relative; /* 🟢 חיוני! שה-close-btn יתמקם ביחס למודל */
   background: white;
   padding: 20px;
   border-radius: 10px;
@@ -133,6 +135,7 @@
   gap: 15px;
   animation: fadeIn 0.3s ease-in-out;
 }
+
 
 .mobile-nav-link {
   font-size: 1.5rem;
@@ -153,11 +156,13 @@
   font-size: 1.5rem;
   color: #e65c00;
   cursor: pointer;
-  align-self: flex-end;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
-.profile-link{
 
+.profile-link {
   color: #e65c00;
 }
 
@@ -165,7 +170,6 @@
   .navbar {
     justify-content: space-between;
     padding: 15px 25px;
-    background: rgba(0, 0, 0, 0); /* יותר קונטרסט */
   }
 
   .nav-links {
@@ -173,26 +177,12 @@
   }
 
   .nav-link {
-    font-size: 1rem; /* היה 1.2rem */
-  }
-
-  .menu-btn {
-    display: none; /* עדיין מוסתר אלא אם תבחר להפוך אותו לזמין */
-  }
-
-  /* תפריט נייד נשאר מוסתר במסך כזה */
-  .mobile-nav-overlay {
-    display: none;
-  }
-
-  .mobile-nav {
-    display: none;
+    font-size: 1rem;
   }
 }
 
-/* Responsive - Show Modal Button */
 @media (max-width: 768px) {
-  .menu-btn {
+  .nav-menu-btn {
     display: block;
     position: absolute;
     top: 20px;
@@ -204,7 +194,6 @@
   }
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;

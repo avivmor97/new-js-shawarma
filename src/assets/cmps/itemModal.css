@@ -1,3 +1,4 @@
+/* ======== Base Modal Styles ======== */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -8,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
 
 .modal-content {
@@ -18,16 +20,26 @@
     max-width: 500px;
     width: 90%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .modal-img {
     width: 150px;
     height: 150px;
     border-radius: 10px;
+    object-fit: cover;
+}
+
+.itemName {
+    margin: 0;
 }
 
 .custom-options h3 {
     margin-top: 15px;
+    font-size: 1.4rem;
 }
 
 .option-list {
@@ -44,15 +56,12 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
     transition: 0.3s;
 }
 
-/* Green Background for Selected Extras */
-.option-list .selected-extra {
-    background: #28a745;
-}
-
-/* Green Background for Selected Drink Size */
+/* Selected Options */
+.option-list .selected-extra,
 .size-btn.selected-extra {
     background: #28a745;
 }
@@ -63,137 +72,139 @@
     font-size: 1.5rem;
     position: absolute;
     top: 10px;
-    right: 500px;
+    left: 10px; /* ✅ בצד שמאל של המודל */
     cursor: pointer;
 }
 
 .modal-actions {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
 }
 
-.cancel-btn {
+.cancel-btn,
+.confirm-btn {
+    flex: 1;
     background: #dc3545;
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
 }
 
 .confirm-btn {
     background: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-
-
+/* ======== Media Query: Tablets & Narrow Screens ======== */
 @media (max-width: 768px) {
     .modal-content {
         max-width: 90%;
         width: 95%;
-        height: 450px; /* Fixed height */
         padding: 15px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .itemName{
-        margin: 0;
+        height: auto;
     }
 
     .modal-img {
-        width: 140px;
-        height: 140px;
+        width: 130px;
+        height: 130px;
     }
 
     .custom-options h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin-top: 10px;
     }
 
-    .option-list {
-        gap: 10px;
-    }
-
     .option-list button {
-        font-size: 1rem;
-        padding: 8px 12px;
-    }
-
-    .modal-actions {
-        display: flex;
-        flex-direction: row; /* Ensures buttons are in a row */
-        justify-content: space-between;
-        width: 100%;
-        padding: 10px 0;
+        font-size: 0.9rem;
     }
 
     .cancel-btn,
     .confirm-btn {
-        flex: 1; /* Buttons will evenly space out */
-        margin: 0 5px;
-        font-size: 1rem;
-        padding: 12px;
-        border-radius: 8px;
+        font-size: 0.9rem;
+        padding: 10px;
+        border-radius: 6px;
     }
 
     .close-btn {
         font-size: 1.5rem;
-        position: absolute;
-        top: 10px;
-        right: 10px;
+        left: 10px; /* 🟢 שמירה על צד שמאל */
+        right: auto;
     }
 }
 
-@media (max-width: 480px) {
+/* ======== Media Query: Mobile (iPhone 7) ======== */
+@media (max-width: 375px) {
     .modal-content {
-        width: 95%;
-        height: 450px; /* Keep fixed height */
         padding: 10px;
     }
 
     .modal-img {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
     }
 
     .custom-options h3 {
-        font-size: .9rem;
+        font-size: 0.95rem;
     }
 
     .option-list {
-        gap: 8px;
+        gap: 6px;
     }
 
     .option-list button {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         padding: 6px 10px;
-    }
-
-    .modal-actions {
-        width: 100%;
-       
-        justify-content: space-evenly;
     }
 
     .cancel-btn,
     .confirm-btn {
-        font-size: 0.7rem;
-        padding: 12px;
-        
+        font-size: 0.75rem;
+        padding: 8px 10px;
     }
 
     .close-btn {
-        font-size: 1.4rem;
-        width: 10%;
+        font-size: 1.3rem;
+        left: 10px;
+        right: auto;
+    }
+}
+
+/* ======== Media Query: Ultra-Wide Screens (32" monitor) ======== */
+@media (min-width: 1600px) {
+    .modal-content {
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    .modal-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .custom-options h3 {
+        font-size: 1.6rem;
+    }
+
+    .option-list button {
+        font-size: 1.1rem;
+        padding: 10px 16px;
+    }
+
+    .cancel-btn,
+    .confirm-btn {
+        font-size: 1.1rem;
+        padding: 14px 18px;
+    }
+
+    .close-btn {
+        font-size: 1.8rem;
+        left: 10px;
+        right: auto;
     }
 }

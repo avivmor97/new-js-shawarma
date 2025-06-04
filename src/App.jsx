@@ -34,30 +34,35 @@ const AppContent = () => {
   const dispatch = useDispatch()
   const { token } = useSelector((state) => state.auth)
 
-
   return (
     <CartProvider>
       <Router>
         <div className="app">
           <NavBar />
           <Cart />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/login" element={token ? <Navigate to="/profile" /> : <Login />} />
-            <Route path="/register" element={token ? <Navigate to="/profile" /> : <Register />} />
-            
-            {/* Protected Routes */}
-            <Route element={<ProtectedRoute />}>
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/reservation" element={<Reservation />} />
-            </Route>
-          </Routes>
+
+          {/* 💡 כאן ה־Main Layout של כל הדפים */}
+          <main className="main-container">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/login" element={token ? <Navigate to="/profile" /> : <Login />} />
+              <Route path="/register" element={token ? <Navigate to="/profile" /> : <Register />} />
+
+              {/* Protected Routes */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/reservation" element={<Reservation />} />
+              </Route>
+            </Routes>
+          </main>
+
           <Footer />
         </div>
       </Router>
     </CartProvider>
   )
 }
+
