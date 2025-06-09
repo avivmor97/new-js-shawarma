@@ -15,7 +15,7 @@ export const Menu = () => {
 
   const categories = [
     {
-      name: 'Top Sellers',
+      name: 'Main Dishes',
       items: [
         { name: 'Pita Shawarma', price: 9.99, image: pitaImg },
         { name: 'Laffa Shawarma', price: 12.99, image: laffaImg },

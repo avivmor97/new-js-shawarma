@@ -1,49 +1,143 @@
 .profile-container {
-    max-width: 900px; /* Increased width */
-    margin: 280px auto; /* More vertical spacing */
-    padding: 40px; /* Increased padding for better spacing */
-    background: rgba(255, 255, 255, 0.95); /* Slightly more visible */
-    border-radius: 15px; /* More rounded corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
-    text-align: center;
-    font-size: 1.2rem; /* Slightly larger font size */
-    height: 100%;
+  max-width: 900px;
+  margin: 250px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-size: 1.2rem;
+  height: 100%;
 }
 
-/* Make headings bigger */
-.profile-container h1 {
-    color: #ff6600;
-    font-size: 2.5rem; /* Increased size */
-    margin-bottom: 20px;
+.profile-title {
+  color: #ff6600;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.profile-container ul {
-    list-style: none;
-    padding: 0;
+.label-input {
+  color: #333333 !important;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
-.profile-container li {
-    background: #fff;
-    padding: 20px; /* More spacing inside list items */
-    margin: 15px 0;
-    border-radius: 8px; /* Slightly more rounded corners */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    font-size: 1.1rem;
+/* Form styling */
+.profile-form {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-/* Responsive Adjustments */
+.form-group {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border: 1px solid #ff6600;
+}
+
+.profile-save-btn {
+  margin-top: 10px;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.profile-save-btn:hover {
+  background-color: #e65c00;
+}
+
+/* Static profile details */
+.profile-details {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Order history */
+.order-history-title {
+  margin-top: 40px;
+  font-size: 2rem;
+  color: #444;
+}
+
+.order-history-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.order-history-item {
+  background: #fff;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.order-history-item p {
+  margin: 8px 0;
+}
+
+/* Error + Loading */
+.profile-error {
+  color: red;
+  font-weight: bold;
+}
+
+.profile-loading {
+  font-weight: bold;
+  color: #555;
+  margin-top: 200px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .profile-container {
-        max-width: 95%; /* Take more space on smaller screens */
-        padding: 30px;
-        margin: 130px auto; /* More vertical spacing */
-    }
+  .profile-container {
+    max-width: 95%;
+    padding: 30px;
+    margin: 130px auto;
+  }
 
-    .profile-container h1 {
-        font-size: 2rem; /* Adjust for mobile */
-    }
+  .profile-title {
+    font-size: 2rem;
+  }
 
-    .profile-container li {
-        padding: 15px;
-    }
+  .order-history-item {
+    padding: 15px;
+  }
+
+  .form-group {
+    max-width: 100%;
+  }
 }

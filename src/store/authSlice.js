@@ -2,70 +2,54 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../services/api.js'
 
 const initialState = {
-  user: null,
-  token: null,
+  user: JSON.parse(localStorage.getItem('user')) || null,
+  token: localStorage.getItem('token') || null,
   loading: false,
   error: null,
 }
 
+// 🔐 Login
 export const loginUser = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const response = await axios.post('/auth/login', credentials)
-
     const token = response.data.token
     const user = response.data.user
 
-    // שמור ב-Redux
     thunkAPI.dispatch(authSlice.actions.setToken(token))
     thunkAPI.dispatch(authSlice.actions.setUser(user))
-
-    // שמור ב-localStorage
     localStorage.setItem('token', token)
     localStorage.setItem('user', JSON.stringify(user))
 
-    // קרא ל-fetchUserProfile עם token ידני
+    // Fetch full profile
     const profileResponse = await axios.get('/auth/profile', {
       headers: { Authorization: `Bearer ${token}` }
     })
 
-    // עדכן את המשתמש שוב אם צריך
     thunkAPI.dispatch(authSlice.actions.setUser(profileResponse.data))
+    localStorage.setItem('user', JSON.stringify(profileResponse.data))
 
     return { token, user: profileResponse.data }
-
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response?.data?.message || 'Login failed')
   }
 })
 
-
-
-
-// Async action: Register
+// 🆕 Register
 export const registerUser = createAsyncThunk('auth/register', async (userData, thunkAPI) => {
   try {
-    console.log("User data being sent for registration:", userData);  // הדפס את הנתונים
     const response = await axios.post('/auth/register', userData, {
-      headers: {
-        'Content-Type': 'application/json',  // קובע את סוג התוכן לשליחה
-      }
-    });
-    return response.data;  // אם הכל עבר בהצלחה
+      headers: { 'Content-Type': 'application/json' }
+    })
+    return response.data
   } catch (error) {
-    console.error("Error during registration: ", error.response);  
-    console.log("Error response:", error.response);  // הדפסת שגיאת ה-401 במלואה
-
-    return thunkAPI.rejectWithValue(error.response?.data?.message || 'Registration failed');
+    return thunkAPI.rejectWithValue(error.response?.data?.message || 'Registration failed')
   }
-});
+})
 
-
-
-
-// Fetch User Profile
+// 👤 Fetch Profile
 export const fetchUserProfile = createAsyncThunk('auth/fetchUserProfile', async (_, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().auth.token  // מקבל את ה-token מ-Redux
+    const token = thunkAPI.getState().auth.token
     const response = await axios.get('/auth/profile', {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -75,12 +59,28 @@ export const fetchUserProfile = createAsyncThunk('auth/fetchUserProfile', async 
   }
 })
 
-// Logout Action
+// ✏️ Update Profile
+export const updateUserProfile = createAsyncThunk('auth/updateUserProfile', async (updatedData, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.token
+    const response = await axios.put('/auth/profile', updatedData, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    localStorage.setItem('user', JSON.stringify(response.data))
+    return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to update profile')
+  }
+})
+
+// 🚪 Logout
 export const logoutUser = () => (dispatch) => {
   dispatch(authSlice.actions.logout())
+  localStorage.removeItem('token')
+  localStorage.removeItem('user')
 }
 
-// Auth Slice
+// 🧩 Slice
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -122,7 +122,10 @@ const authSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
-      .addCase(fetchUserProfile.pending, (state) => { state.loading = true })
+      .addCase(fetchUserProfile.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.loading = false
         state.user = action.payload
@@ -131,7 +134,20 @@ const authSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.loading = false
+        state.user = action.payload
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
   },
 })
 
+export const { setUser, setToken, logout } = authSlice.actions
 export default authSlice.reducer

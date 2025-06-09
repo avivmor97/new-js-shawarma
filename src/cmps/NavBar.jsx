@@ -27,9 +27,9 @@ export const NavBar = () => {
             <div className="nav-actions">
               {user ? (
                 <>
-                  <span className="user-welcome">
-                    Welcome, <Link to="/profile" className="profile-link">{user.name}</Link>
-                  </span>
+                <span className="user-welcome">
+                  Welcome, <Link to="/profile" className="profile-link">{user?.username || user?.name || 'User'}</Link>
+                </span>
                   <button className="nav-btn" onClick={() => dispatch(logoutUser())}>Logout</button>
                 </>
               ) : (
@@ -58,7 +58,10 @@ export const NavBar = () => {
             {/* Authentication for Mobile Menu */}
             {user ? (
               <>
-                <span className="user-welcome">Welcome, {user.name}</span>
+                <span className="user-welcome">
+                  Welcome, <Link to="/profile" className="profile-link">{user?.username || user?.name || 'User'}</Link>
+                </span>
+
                 <button className="nav-btn" onClick={() => { dispatch(logoutUser()); setIsMenuOpen(false) }}>Logout</button>
               </>
             ) : (

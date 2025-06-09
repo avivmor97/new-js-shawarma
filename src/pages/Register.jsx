@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../store/authSlice.js'
+import { useNavigate } from 'react-router-dom'
 
 export const Register = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { loading, error } = useSelector((state) => state.auth)
 
   const [formData, setFormData] = useState({
@@ -11,14 +13,23 @@ export const Register = () => {
     password: '',
   })
 
+  const [showModal, setShowModal] = useState(false)
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // שולחים את פרטי המשתמש להירשם
-    dispatch(registerUser(formData))  
+    const resultAction = await dispatch(registerUser(formData))
+
+    if (registerUser.fulfilled.match(resultAction)) {
+      setShowModal(true)
+      setTimeout(() => {
+        setShowModal(false)
+        navigate('/')
+      }, 2000)
+    }
   }
 
   return (
@@ -38,6 +49,14 @@ export const Register = () => {
           {loading ? 'Registering...' : 'Register'}
         </button>
       </form>
+
+      {showModal && (
+        <div className="success-modal-overlay">
+          <div className="success-modal">
+            <p>🎉 Registration successful!</p>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
